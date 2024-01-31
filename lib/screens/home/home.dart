@@ -1,5 +1,6 @@
-import 'package:brew_crew/services/auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../services/auth.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -15,9 +16,13 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
         actions: <Widget>[
-          IconButton(
+          TextButton.icon(
             icon: const Icon(
               Icons.person,
+            ),
+            label: const Text('Logout'),
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
             ),
             onPressed: () async {
               await _auth.signOut();

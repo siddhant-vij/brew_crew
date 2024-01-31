@@ -1,7 +1,7 @@
-import 'package:brew_crew/models/app_user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/app_user.dart';
 import 'home/home.dart';
 import 'auth/authenticate.dart';
 
