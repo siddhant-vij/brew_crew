@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 
 import '../models/app_user.dart';
+import 'database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -45,6 +46,11 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
+      await DatabaseService(uid: user!.uid).updateUserData(
+        name: 'New Crew Member',
+        sugars: '0',
+        strength: 100,
+      );
       return AuthResult(user: _getAppUserFromFirebaseUser(user));
     } on FirebaseAuthException catch (e) {
       _logger.e(e.message);
